@@ -3,38 +3,38 @@ using UnityEngine.UI;
 
 public class CharacterScaler : MonoBehaviour
 {
-    public RectTransform knightImage;
+    [Header("References")]
+    public Transform character;
     public Slider widthSlider;
     public Slider heightSlider;
 
-    private Vector3 baseScale;
-
     void Start()
     {
-        // Saglabā sākotnējo lielumu (piemēram 5,5,1)
-        baseScale = knightImage.localScale;
+        // Drošības pārbaudes (lai vairs nekrīt spēle)
+        if (character == null) { Debug.LogError("CharacterScaler: character nav pievienots Inspectorā!"); enabled = false; return; }
+        if (widthSlider == null) { Debug.LogError("CharacterScaler: widthSlider nav pievienots Inspectorā!"); enabled = false; return; }
+        if (heightSlider == null) { Debug.LogError("CharacterScaler: heightSlider nav pievienots Inspectorā!"); enabled = false; return; }
 
-        widthSlider.onValueChanged.AddListener(OnSliderChange);
-        heightSlider.onValueChanged.AddListener(OnSliderChange);
+        // Piesaistām slider eventus
+        widthSlider.onValueChanged.AddListener(SetWidth);
+        heightSlider.onValueChanged.AddListener(SetHeight);
 
-        UpdateScale();
+        // Uzliekam sākuma vērtības no character scale
+        widthSlider.value = character.localScale.x;
+        heightSlider.value = character.localScale.y;
     }
 
-    void OnSliderChange(float value)
+    public void SetWidth(float value)
     {
-        UpdateScale();
+        var s = character.localScale;
+        s.x = value;
+        character.localScale = s;
     }
 
-    void UpdateScale()
+    public void SetHeight(float value)
     {
-        float width = widthSlider.value;
-        float height = heightSlider.value;
-
-        // Reizinām ar sākuma scale, nevis pārrakstām to
-        knightImage.localScale = new Vector3(
-            baseScale.x * width,
-            baseScale.y * height,
-            1f
-        );
+        var s = character.localScale;
+        s.y = value;
+        character.localScale = s;
     }
 }
