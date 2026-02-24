@@ -3,38 +3,43 @@ using UnityEngine.UI;
 
 public class CharacterScaler : MonoBehaviour
 {
-    [Header("References")]
     public Transform character;
+
+    [Header("All equipped visuals to scale together")]
+    public Transform[] equippedParts; // helmet, armor, boots utt.
+
     public Slider widthSlider;
     public Slider heightSlider;
 
     void Start()
     {
-        // Drošības pārbaudes (lai vairs nekrīt spēle)
-        if (character == null) { Debug.LogError("CharacterScaler: character nav pievienots Inspectorā!"); enabled = false; return; }
-        if (widthSlider == null) { Debug.LogError("CharacterScaler: widthSlider nav pievienots Inspectorā!"); enabled = false; return; }
-        if (heightSlider == null) { Debug.LogError("CharacterScaler: heightSlider nav pievienots Inspectorā!"); enabled = false; return; }
-
-        // Piesaistām slider eventus
         widthSlider.onValueChanged.AddListener(SetWidth);
         heightSlider.onValueChanged.AddListener(SetHeight);
 
-        // Uzliekam sākuma vērtības no character scale
         widthSlider.value = character.localScale.x;
         heightSlider.value = character.localScale.y;
     }
 
     public void SetWidth(float value)
     {
-        var s = character.localScale;
-        s.x = value;
-        character.localScale = s;
+        ApplyScale(value, character.localScale.y);
     }
 
     public void SetHeight(float value)
     {
-        var s = character.localScale;
-        s.y = value;
+        ApplyScale(character.localScale.x, value);
+    }
+
+    void ApplyScale(float x, float y)
+    {
+        Vector3 s = new Vector3(x, y, 1f);
+
         character.localScale = s;
+
+        // skalo arī drēbes
+        foreach (var part in equippedParts)
+        {
+            if (part != null) part.localScale = s;
+        }
     }
 }
