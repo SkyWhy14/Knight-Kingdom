@@ -10,10 +10,7 @@ public class CharacterScaler : MonoBehaviour
 
     void Start()
     {
-        // Drošības pārbaudes (lai vairs nekrīt spēle)
-        if (character == null) { Debug.LogError("CharacterScaler: character nav pievienots Inspectorā!"); enabled = false; return; }
-        if (widthSlider == null) { Debug.LogError("CharacterScaler: widthSlider nav pievienots Inspectorā!"); enabled = false; return; }
-        if (heightSlider == null) { Debug.LogError("CharacterScaler: heightSlider nav pievienots Inspectorā!"); enabled = false; return; }
+      
 
         // Piesaistām slider eventus
         widthSlider.onValueChanged.AddListener(SetWidth);
