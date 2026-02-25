@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 428f5be2c70dafe4fb73e137be11dc87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneChange
+  SceneName: 
 --- !u!4 &67480783
 Transform:
   m_ObjectHideFlags: 0
@@ -397,7 +398,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 67480782}
         m_TargetAssemblyTypeName: SceneChange, Assembly-CSharp
-        m_MethodName: LoadWithDelay
+        m_MethodName: ChangeScene
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1179,7 +1180,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 67480782}
         m_TargetAssemblyTypeName: SceneChange, Assembly-CSharp
-        m_MethodName: QuitApplication
+        m_MethodName: OnApplicationQuit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

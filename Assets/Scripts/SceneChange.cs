@@ -1,17 +1,27 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class SceneChange : MonoBehaviour
 {
-    public void ChangeScene(string sceneName)
+    public void LoadWithDelay(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        StartCoroutine(LoadSceneAfterDelay(sceneName));
     }
-    public string SceneName;
 
-    public void OnApplicationQuit()
+    private IEnumerator LoadSceneAfterDelay(string sceneName)
     {
-        Application.Quit();
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+    }
 
+    public void QuitApplication()
+    {
+        /* if(UnityEditor.EditorApplication.isPlaying)
+         {
+             UnityEditor.EditorApplication.isPlaying = false;
+
+         } else*/
+        Application.Quit();
     }
 }
