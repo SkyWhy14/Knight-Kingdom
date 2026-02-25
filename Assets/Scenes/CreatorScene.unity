@@ -7124,7 +7124,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1808554072}
         m_TargetAssemblyTypeName: SceneChange, Assembly-CSharp
-        m_MethodName: ChangeScene
+        m_MethodName: LoadWithDelay
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7617,7 +7617,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 428f5be2c70dafe4fb73e137be11dc87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneChange
-  SceneName: Main Menu
 --- !u!4 &1808554073
 Transform:
   m_ObjectHideFlags: 0
@@ -8699,8 +8698,8 @@ SceneRoots:
   - {fileID: 87360304}
   - {fileID: 6064879}
   - {fileID: 1163084943}
+  - {fileID: 1808554073}
   - {fileID: 1360241344}
   - {fileID: 2102185113}
   - {fileID: 1001339743}
   - {fileID: 952096611}
-  - {fileID: 1808554073}
