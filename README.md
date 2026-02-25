@@ -10,6 +10,8 @@
 - [X] Var mainit drēbes pēc kategorijām
 - [X] Pievienotas vairākas drēbju kategorijas
 - [X] Pievienoti vairāki drēbju varianti
+- [X] Pievienoti labaki input fieldi
+- [X] Pievienots kads uzpiez uz input field ir click sound
       
       
 # Main Menu
