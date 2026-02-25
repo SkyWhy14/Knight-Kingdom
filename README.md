@@ -14,6 +14,7 @@ Spēle ar drag & drop tipa dark rpg stila.
 - [X] Pievienoti vairāki drēbju varianti
 - [X] Pievienoti labaki input fieldi
 - [X] Pievienots kads uzpiez uz input field ir click sound
+- [X] Pievienots drēbju scalling
       
       
 ## Main Menu
